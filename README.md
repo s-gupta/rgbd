@@ -1,10 +1,10 @@
 This is code to generate the bottom up segmentation, amodal completion,
 semantic segmentation and scene classification results for our CVPR 13 paper,
-	Perceptual Organization and Recognition of Indoor Scenes from RGB-D Images.
-	-- Saurabh Gupta, Pablo Arbelaez, Jitendra Malik, In CVPR 2013
+Perceptual Organization and Recognition of Indoor Scenes from RGB-D Images. 
+Saurabh Gupta, Pablo Arbelaez, Jitendra Malik, In CVPR 2013
 
 Notes
-=====
+-----
 
 1. External Dependencies. Please put them in the folder external and modify
 startup.m and COM/getPaths.m
@@ -30,14 +30,15 @@ startup.m and COM/getPaths.m
 
 2. The code is intended for use with the data available here. This contains the
 color images, preprocessed point clouds and the preprocessed ground truth. 
-http://www.cs.berkeley.edu/~sgupta/cvpr13/data.tgz   
+http://www.cs.berkeley.edu/~sgupta/cvpr13/data.tgz . Please modify COM/getPaths.m 
+and allBenchmarks/benchmarkPaths.m to point to where you put the data folder. 
 
 3. We also provide the 
 precomputed results, http://www.cs.berkeley.edu/~sgupta/cvpr13/output.tgz, 
 and the pretrained models, http://www.cs.berkeley.edu/~sgupta/cvpr13/model.tgz.
 
 Data Preprocessing
-==================
+------------------
 1. The data that we provide is different from the one provided by Silberman
 etal in the following ways:
   
@@ -55,20 +56,20 @@ etal in the following ways:
   contours.
 
 Precomputed Results
-===================
+-------------------
 1. http://www.cs.berkeley.edu/~sgupta/cvpr13/output.tgz:
 includes the folder cachedir/release/output which contains the UCM, amodal
 completion and the semantic segmentation outputs. Their are also .mat files
 with the performance of our system.
 
 Pre trained Models
-==================
+------------------
 1. http://www.cs.berkeley.edu/~sgupta/cvpr13/model.tgz, includes the folder
 cachedir/release/model which has the pretrained ucm models, various semantic
 segmentation and scene classification models.
 
 
 Questions and Comments
-======================
+----------------------
 Please feel free to email, sgupta at eecs dot berkeley dot edu for any questions and
 comments.
