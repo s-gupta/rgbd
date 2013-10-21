@@ -33,15 +33,16 @@ color images, preprocessed point clouds and the preprocessed ground truth.
 http://www.cs.berkeley.edu/~sgupta/cvpr13/data.tgz   
 
 3. We also provide the 
-precomputed results, http://www.cs.berkeley.edu/~sgupta/cvpr13/results.tgz, 
-and the pretrained models, http://www.cs.berkeley.edu/~sgupta/cvpr13/models.tgz.
+precomputed results, http://www.cs.berkeley.edu/~sgupta/cvpr13/output.tgz, 
+and the pretrained models, http://www.cs.berkeley.edu/~sgupta/cvpr13/model.tgz.
 
 Data Preprocessing
 ==================
 1. The data that we provide is different from the one provided by Silberman
 etal in the following ways:
+  
   a. We use I(46:470, 41:600, :) part of the image. This is different from what
-  they use by 1 pixel on each side, I think
+  they use by 1 pixel on each side, I think.
   
   b. We use the original point clouds from the Kinect from over here
   http://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/orig_images.mat, and
@@ -62,12 +63,12 @@ with the performance of our system.
 
 Pre trained Models
 ==================
-1. http://www.cs.berkeley.edu/~sgupta/cvpr13/models.tgz, includes the folder
-cachedir/release/models which has the pretrained ucm models, various semantic
+1. http://www.cs.berkeley.edu/~sgupta/cvpr13/model.tgz, includes the folder
+cachedir/release/model which has the pretrained ucm models, various semantic
 segmentation and scene classification models.
 
 
 Questions and Comments
 ======================
-Please feel free to email, sgupta@eecs.berkeley.edu for any questions and
+Please feel free to email, sgupta at eecs dot berkeley dot edu for any questions and
 comments.
