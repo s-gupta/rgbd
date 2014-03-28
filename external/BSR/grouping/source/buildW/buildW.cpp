@@ -50,11 +50,15 @@ using namespace std;
 
 void mexFunction(int nlhs, mxArray *plhs[],int nrhs,const mxArray *prhs[])
 {
-    if (nrhs != 2) mexErrMsgTxt("INPUT:  (lattice.H,lattice.V) ");
+    if (nrhs != 4) mexErrMsgTxt("INPUT:  (lattice.H, lattice.V, dthresh, sigma) ");
     if (nlhs != 3) mexErrMsgTxt("OUTPUT: [i,j,s] ");
 
-    int dthresh = 5;
-    float sigma = 0.1;
+    
+    int dthresh;
+    float sigma;
+    
+    dthresh = int(mxGetScalar(prhs[2]));
+    sigma = float(mxGetScalar(prhs[3]));
 
     // copy edge info into lattice struct
     Group::DualLattice boundaries; 

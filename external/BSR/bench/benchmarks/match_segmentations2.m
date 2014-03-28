@@ -1,4 +1,4 @@
-function [sumRI sumVOI ] = match_segmentations2(seg, groundTruth)
+function [sumRI, sumVOI ] = match_segmentations2(seg, groundTruth)
 % match a test segmentation to a set of ground-truth segmentations with the PROBABILISTIC RAND INDEX and VARIATION OF INFORMATION metrics.
 
 sumRI = 0;
@@ -15,7 +15,9 @@ for s = 1 : numel(groundTruth)
         for j = 1:ty
             u = seg(i,j);
             v = gt(i,j); 
-            confcounts(u,v) = confcounts(u,v)+1;
+            if (u>0) && (v>0), % ignore label '0'
+            	confcounts(u,v) = confcounts(u,v)+1;
+            end
         end
     end
     

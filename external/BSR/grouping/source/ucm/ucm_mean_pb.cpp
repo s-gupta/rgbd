@@ -308,7 +308,7 @@ void compute_ucm
       if( (labels[minor.region1] == minor.region1) && (labels[minor.region2] == minor.region2)		&&
       	 (minor.energy == R[minor.region1].neighbors[minor.region2].energy) )
       {
-         if (current_energy <= minor.energy) current_energy = minor.energy;
+         /*if (current_energy <= (minor.energy + 0.000000001) ) current_energy = minor.energy;
          else
          {
             printf("\n ERROR : \n");
@@ -316,8 +316,8 @@ void compute_ucm
             printf("\n minor.energy = %f \n\n", minor.energy);
             delete[] R; delete[] labels;
 			mexErrMsgTxt(" BUG: THIS IS NOT AN ULTRAMETRIC !!! ");
-         } 
-         
+         } */
+         current_energy = minor.energy;
          dissimilarity =  R[minor.region1].neighbors[minor.region2].total_pb / R[minor.region1].neighbors[minor.region2].bdry_length ;
          
          if (minor.region1 < minor.region2)
