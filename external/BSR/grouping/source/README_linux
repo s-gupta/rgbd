@@ -1,0 +1,55 @@
+Follow these steps to compile the Berkeley Segmentation Ressources from source code on Linux systems:
+
+[ Tested on Ubuntu 12.10 with matlab-r2013a ]
+
+
+1.  Prerequisites:
+
+        a. We assume that you have matlab installed and mex is configured correctlly (type mex -setup in the matlab prompt).
+        
+        b. Make sure matlab is in your path, e.g.:
+            $ export PATH=$PATH:/opt/matlab-r2011a/bin
+
+        c. Make sure your system has the required image libraries:
+            $ sudo apt-get install libjpeg-dev
+            $ sudo apt-get install libpng-dev
+
+	d. Force matlab to load the system's latest libraries, rather than its own older versions:
+	    $ export LD_PRELOAD=/lib/x86_64-linux-gnu/libc.so.6:/usr/lib/x86_64-linux-gnu/libstdc++.so.6:/lib/x86_64-linux-gnu/libgcc_s.so.1;
+
+
+2.  Compilation:
+
+        
+	a.  We assume that you uncompressed the .tgz file in a folder called /BSR/
+
+	b.  Edit the following line in the file /BSR/grouping/source/gpb_src/Rules.make to point to the directory where matlab 
+            is installed (example given below):
+
+            MATLAB_PATH := /opt/matlab-r2011a
+
+            Also, if you are using a 32-bit instead of a 64-bit architecture, uncomment
+            the lines specifying 32-bit architecture and comment the lines specifying
+            64-bit:
+
+            # matlab mex file compilation settings - matlab architecture (32-bit machines)
+            MATLAB_ARCH := glnx86
+            MEX_EXTN := mexglx
+
+            # matlab mex file compilation settings - matlab architecture (64-bit machines)
+            #MATLAB_ARCH := glnxa64
+            #MEX_EXTN := mexa64
+
+        c. go to /BSR/grouping/source and type the following command:
+            $ source build.sh
+
+            This script should build all the packages and copy the resulting .mex files into the /BSR/grouping/lib directory.
+
+3.  Usage examples:
+
+        a. /BSR/grouping/test_gPb_ucm.m : Run gPb_ucm on a small image to test compilation.
+
+        b. /BSR/grouping/example.m: usage examples of gPb_ucm, including support for large images.
+
+        c. /BSR/bench/test_benchs.m: usage examples of BSDS500 benchmarks with various input formats.
+

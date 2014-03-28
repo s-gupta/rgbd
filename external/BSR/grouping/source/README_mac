@@ -1,0 +1,55 @@
+Follow these steps to compile the Berkeley Segmentation Ressources from source code on Mac systems:
+
+[ Tested on OS X 10.7 with matlab-r2011a ]
+
+
+1.  Prerequisites:
+
+        a. We assume that you have matlab installed and mex is configured correctlly (type mex -setup in the matlab prompt).
+        
+        b. Make sure matlab is in your path, e.g.:
+            $ export PATH=/Applications/MATLAB_R2011a.app/bin:$PATH
+
+        c. Install XCode >= 4.3
+
+        d. Install XCode command line tools 
+            (see: http://developer.apple.com/library/mac/#documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_4_3.html)
+
+            NOTE: If you previously had XCode < 4.3 you will need to edit your mexopts.sh file to set the SDKROOT to the new SDKPATH path, e.g.,
+            SDKROOT='/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/'
+            (see: http://www.mathworks.com/support/solutions/en/data/1-FR6LXJ/)
+
+        e. Install macports (see: http://www.macports.org/)
+
+        f. Use macports to install the required image libraries:
+            $ sudo port install jpeg
+            $ sudo port install libpng
+            
+
+2.  Compilation:
+
+	a.  We assume that you uncompressed the .tgz file in a folder called /BSR/
+
+        b.  Overwrite the default linux make files with the Mac versions:
+            $ cp -f /BSR/grouping/source/gpb_src/Rules.make_mac /BSR/grouping/source/gpb_src/Rules.make
+            $ cp -f /BSR/grouping/source/buildW/Makefile_mac /BSR/grouping/source/buildW/Makefile
+
+        c.  Edit the following line in the file /BSR/grouping/source/gpb_src/Rules.make to point to the directory where matlab 
+            is installed (example given below):
+
+            MATLAB_PATH := /Applications/MATLAB_R2011a.app/
+
+        d. go to /BSR/grouping/source and type the following command:
+            $ source build.sh
+
+            This script should build all the packages and copy the resulting .mex files into the grouping/lib directory.
+
+
+3.  Usage examples:
+
+        a. /BSR/grouping/test_gPb_ucm.m : Run gPb_ucm on a small image to test compilation.
+
+        b. /BSR/grouping/example.m: usage examples of gPb_ucm, including support for large images.
+
+        c. /BSR/bench/test_benchs.m: usage examples of BSDS500 benchmarks with various input formats.
+

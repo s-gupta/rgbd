@@ -1,0 +1,25 @@
+Berkeley Segmentation Resources
+
+We are grateful to users for their feedback and contributions. 
+
+
+Current release (22/1/13):
+    - Updates in compilation on Mac by Ross Girshick (rbg@eecs.berkeley.edu), Juan Cardelino (juan.cardelino@gmail.com) and Navid Nourani-Vatani.
+    - Support of globalPb for large images (globalPb_pieces.m)
+        
+Release 2011 (TPAMI11):
+    - Release of BSDS500 dataset and benchmarks
+    - Updates on gPb_ucm code
+    
+Release 2009 (CVPR09):
+    - Initial release of ucm code
+    
+Release 2008 (CVPR08):
+    -Initial release of globalPb code
+    
+Release BSDS300 (ICCV2001, NIPS02 and TPAMI04): 
+    - Initial release of Berkeley Segmentation Dataset and Benchmark
+        - BSDS300 and Precision-Recall on Boundaries
+        - Probability of Boundary (Pb) code (BG, CG, TG)
+        - see: http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/segbench/
+    
