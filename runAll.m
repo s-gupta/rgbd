@@ -62,4 +62,10 @@ function [ucm, amodalCompletion, superpixels, contourType, spScore, spRawScores,
   % Compute the final scores and semantic segmentation
   modelFileName = fullfile(paths.modelDir, 'svm-full_entryLevel_ancFullScene_tr-train_val-val_useVal-1.mat');
 	[softOutputDir, hardOutputDir] = testModel(imName, paths, modelFileName);
+
+  % Generate visualizations!
+  saveUCM(imName, ucmThresh);
+  saveAmodalFigs(imName);
+  saveContours(imName)
+  saveSemanticSegmentation(imName, hardOutputDir, ucmThresh);
 end
