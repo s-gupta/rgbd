@@ -218,7 +218,7 @@ void do_predict(mxArray *plhs[], const mxArray *prhs[], struct model *model_, co
 			++correct;
 		++total;
 	}
-	mexPrintf("Accuracy = %g%% (%d/%d)\n", (double) correct/total*100,correct,total);
+	// mexPrintf("Accuracy = %g%% (%d/%d)\n", (double) correct/total*100,correct,total);
 
 	// return accuracy, mean squared error, squared correlation coefficient
 	plhs[1] = mxCreateDoubleMatrix(1, 1, mxREAL);
