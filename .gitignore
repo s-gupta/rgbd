@@ -1,0 +1,5 @@
+*.o
+*.mexa*
+*.mexw*
+*.a
+external/ImageStack
