@@ -22,7 +22,8 @@ function featuresToUcm(trainSet, paths, imSet)
 			ucmDir = paths.ucmDir;
 			fileName = fullfile(paths.ucmDir, strcat(imName, '.mat'));
 			parsave(fileName, 'ucm2', ucm2);
-		catch
+		catch ee
+      prettyexception(ee);
 			fprintf('UCM error in image, %s.\n', imName);
 		end
 	end
