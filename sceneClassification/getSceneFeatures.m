@@ -1,7 +1,8 @@
 function f = getSceneFeatures(imName, paths, param)
 	%First get the ground truth labels for the scenes.
 	for i = 1:length(param.labelInDir),
-		p.labelInDir = param.labelInDir{i};
+    [a, b, c] = fileparts(param.labelInDir{i});
+		p.labelInDir = fullfile(paths.outsDir, b);
 		p.labelFieldName = param.labelFieldName{i};
 		p.numObjectClass = param.numObjectClass;
 		f{i} = helper(imName, paths, p);
