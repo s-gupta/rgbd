@@ -30,7 +30,7 @@ PNG_LIBS = -lpng
 # Target names and installation #
 #################################
 
-BIN_TARGET = ../ImageStack
+BIN_TARGET = bin/ImageStack
 default: $(BIN_TARGET)
 LIB_TARGET = lib/libImageStack.so
 LIB_FLAGS = -shared -fPIC

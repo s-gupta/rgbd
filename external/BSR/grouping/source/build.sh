@@ -1,7 +1,7 @@
 cd gpb_src
 make clean
-make
-make matlab
+make -j 4
+make matlab -j 4
 cp -f matlab/segmentation/load_smatrix.mex* ../../lib/
 cp -f matlab/segmentation/mex_contour_sides.mex* ../../lib/
 cp -f matlab/segmentation/mex_nonmax_oriented.mex* ../../lib/
