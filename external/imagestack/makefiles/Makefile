@@ -14,14 +14,14 @@ SDL_LIBS = `sdl-config --libs`
 JPEG_CCFLAGS =
 JPEG_LIBS = -ljpeg
 
-TIFF_CCFLAGS =
-TIFF_LIBS = -ltiff
+#TIFF_CCFLAGS =
+#TIFF_LIBS = -ltiff
 
 PNG_CCFLAGS = 
 PNG_LIBS = -lpng
 
-FFTW_CCFLAGS = 
-FFTW_LIBS = -lfftw3f
+#FFTW_CCFLAGS = 
+#FFTW_LIBS = -lfftw3f
 
 #OPENEXR_CCFLAGS = -I /usr/local/include/OpenEXR
 #OPENEXR_LIBS = -L/usr/local/lib -lImath -lHalf -lIex -lIlmImf
@@ -30,7 +30,7 @@ FFTW_LIBS = -lfftw3f
 # Target names and installation #
 #################################
 
-BIN_TARGET = bin/ImageStack
+BIN_TARGET = ../ImageStack
 default: $(BIN_TARGET)
 LIB_TARGET = lib/libImageStack.so
 LIB_FLAGS = -shared -fPIC
