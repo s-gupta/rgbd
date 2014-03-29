@@ -1,0 +1,16 @@
+more resample operators (e.g. fast bilinear, bicubic)
+
+add consts
+add unit tests
+look over Ce Lui's dissertation again for a cleaner optical flow
+
+it's not clear which operators consume their arguments and which don't
+
+change all help operators to use pprintf
+
+write some better examples
+
+write a README for developers 
+
+write a README for users
+

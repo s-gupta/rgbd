@@ -1,0 +1,27 @@
+#ifndef IMAGESTACK_NETWORKOPS_H
+#define IMAGESTACK_NETWORKOPS_H
+namespace ImageStack {
+
+#include <stdio.h>
+
+class TCPServer;
+
+class Send : public Operation {
+public:
+    void help();
+    bool test();
+    void parse(vector<string> args);
+    static void apply(Image im, string host = "127.0.0.1", int port = 5678);
+};
+
+class Receive : public Operation {
+public:
+    void help();
+    bool test();
+    void parse(vector<string> args);
+    static Image apply(int port = 5678);
+    static map<int, TCPServer *> servers;
+};
+
+}
+#endif
