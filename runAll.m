@@ -1,4 +1,4 @@
-function [ucm, amodalCompletion, superpixels, contourType, spScore, spRawScores, classNames, sceneScores, sceneNames] = runAll(imNum, rgbImage, depthImage, cameraMatrix)
+function [ucm, amodal, superpixels, semantics, scenes] = runAll(imNum, rgbImage, depthImage, cameraMatrix)
 % function runAll(imNum, rgbImage, depthImage, cameraMatrix)
 % Still works by saving all intermediate features as files.
 % Input:
@@ -68,4 +68,13 @@ function [ucm, amodalCompletion, superpixels, contourType, spScore, spRawScores,
   saveAmodalFigs(imName);
   saveContours(imName)
   saveSemanticSegmentation(imName, hardOutputDir, ucmThresh);
+
+  ucm = getUCM(imName);
+  [amodal.clusters, amodal.superpixels, amodal.ucmThresh] = getAmodalCompletion(imName);
+  superpixels = amodal.superpixels;
+
+  semantics = load(fullfile(softOutputDir, imName));
+  dt = load(fullfile(hardOutputDir, imName));
+  semantics.segmentation = dt.segmentation;
+
 end
