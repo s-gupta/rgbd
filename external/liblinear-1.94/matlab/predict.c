@@ -186,8 +186,9 @@ void do_predict(int nlhs, mxArray *plhs[], const mxArray *prhs[], struct model *
 			((total*sumpp-sump*sump)*(total*sumtt-sumt*sumt))
 			);
 	}
-	else
-		info("Accuracy = %g%% (%d/%d)\n", (double) correct/total*100,correct,total);
+	else{
+		// info("Accuracy = %g%% (%d/%d)\n", (double) correct/total*100,correct,total);
+  }
 
 	// return accuracy, mean squared error, squared correlation coefficient
 	tplhs[1] = mxCreateDoubleMatrix(3, 1, mxREAL);
