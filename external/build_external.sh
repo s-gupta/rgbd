@@ -14,7 +14,7 @@ cd ../../
 
 # Build imagestack library
 cd imagestack
-make -f makefiles/Makefile.linux
+make -f makefiles/Makefile.linux -j 8
 cp bin/ImageStack ../.
 cd ../
 
