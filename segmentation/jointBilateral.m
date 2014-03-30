@@ -19,9 +19,12 @@ function out = jointBilateral(refI, I, sigma1, sigma2)
 	str = sprintf('%s -load %s -load %s -jointbilateral %2.6f %2.6f -save %s double  > /dev/null', binName, f{1}, f{2}, sigma1, sigma2, f{3});
 	a = system(str);
 	if(a ~= 0)
-		% For some reason the bilateral filtering library crashes on some inputs!!
+    fprintf('.');
+		% For some reason the bilateral filtering library crashes on some inputs, remove outlier points!
 		maxRefI = prctile(linIt(refI(:,:,4)), 98);
 		refI(:,:,4) = min(refI(:,:,4), maxRefI);
+		minRefI = prctile(linIt(refI(:,:,4)), 2);
+		refI(:,:,4) = max(refI(:,:,4), minRefI);
 		out = jointBilateral(refI, I, sigma1, sigma2);
 	else
 		% Read back the results
