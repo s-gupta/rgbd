@@ -1,11 +1,13 @@
 function paths = getPaths(doMkdir)
 	%% Data dir
-	paths.dataDir = fullfile('/work3/', 'sgupta', 'cvpr13Release', 'data');
+  [thisdir] = fileparts(mfilename('fullpath'));
+  
+	paths.dataDir = fullfile(thisdir, '..', 'data');
 		paths.pcDir = fullfile(paths.dataDir, 'pointCloud');
 		paths.colorImageDir = fullfile(paths.dataDir, 'colorImage');
 
 	%% Cache dir
-	paths.cacheDir = fullfile('/work3', 'sgupta', 'cvpr13Release', 'cachedir');
+	paths.cacheDir= fullfile(thisdir, '..', 'cachedir');
 
 	RUNNAME = 'release';
 	paths.runDir = fullfile(paths.cacheDir, RUNNAME);
@@ -23,6 +25,14 @@ function paths = getPaths(doMkdir)
 			paths.ucmFCacheDir = fullfile(paths.cacheDir, 'ucmFeatures', 'cache');
 			paths.ucmGTDir = fullfile(paths.cacheDir, 'ucmFeatures', 'ucm_gto');
 
+    %% Place where the visualizations will be stored
+	  paths.visDir = fullfile(paths.cacheDir, 'visOut');
+      paths.visUCMDir = fullfile(paths.visDir, 'ucm');
+      paths.visAmodalDir = fullfile(paths.visDir, 'amodal');
+      paths.visDetDir = fullfile(paths.visDir, 'det');
+      paths.visSSDir = fullfile(paths.visDir, 'ss');
+      paths.visCCDir = fullfile(paths.visDir, 'cc');
+	
 	paths.modelDir = fullfile(paths.runDir, 'model');
 		paths.categroySpecificModels = fullfile(paths.modelDir, 'categorySpecific');
 		paths.ucmModels = fullfile(paths.modelDir, 'ucm');
