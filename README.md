@@ -8,34 +8,28 @@ Saurabh Gupta, Pablo Arbelaez, Jitendra Malik, In CVPR 2013
 Notes
 -----
 
-1. External Dependencies. Please put them in the folder external and modify
-startup.m and COM/getPaths.m
-
-  a. gPb-UCM, Contour and region benchmarking code from 
-  http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_full.tgz 
-  We modified the files match_segmentations2.m, ucm_mean_pb.cpp, buildW.cpp,
-  and the patched files and patches are available in external/ 
-  
+1. External Dependencies: are now available from the git under the folder
+  external. You can use the scripts external/build_external.sh to build them.
+  These libraries include: 
+  a. gPb-UCM from 
+    (http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_full.tgz)
   b. VLFeat from http://www.vlfeat.org/
-
-  c. liblinear from http://www.csie.ntu.edu.tw/~cjlin/liblinear/, compile this
-  to generate train.mex*, predict.mex*
-
-  d. liblinear dense version from
-  http://ttic.uchicago.edu/~smaji/projects/digits/, compile this to generate
-  trainDense.mex* and predictDense.mex*
-
+  c. liblinear from http://www.csie.ntu.edu.tw/~cjlin/liblinear/
+  d. liblinear dense from http://ttic.uchicago.edu/~smaji/projects/digits/
   e. SIFT color desprictors from http://www.colordescriptors.com, We used v2.1.
-
   f. Image Stack Library https://code.google.com/p/imagestack/, for computing
   the local deph boundary cues.
 
-2. The code is intended for use with the data available here. This contains the
+2. You can run the system on a new pair of RGB-D image by using the 
+  runAll.m function.
+
+3. The code is intended for use with the data available here. This contains the
 color images, preprocessed point clouds and the preprocessed ground truth. 
 http://www.cs.berkeley.edu/~sgupta/cvpr13/data.tgz . Please modify COM/getPaths.m 
-and allBenchmarks/benchmarkPaths.m to point to where you put the data folder. 
+and allBenchmarks/benchmarkPaths.m to point to where you put the data folder. You
+can use the default paths and put the extracted folders appropriately in the directory data.
 
-3. We also provide the 
+4. We also provide the all 
 precomputed results, http://www.cs.berkeley.edu/~sgupta/cvpr13/output.tgz, 
 and the pretrained models, http://www.cs.berkeley.edu/~sgupta/cvpr13/model.tgz.
 

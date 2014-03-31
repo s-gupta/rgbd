@@ -3,3 +3,5 @@
 *.mexw*
 *.a
 external/ImageStack
+*.png
+*.mat
