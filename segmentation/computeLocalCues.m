@@ -7,7 +7,7 @@ function [bg, cga, cgb, tg, ng1, ng2, dg, z, cues] = computeLocalCues(imName, pa
 	catch
 		[bg, cga, cgb, tg] = computeColorCues(I, param.colorParam);
 		fileName = fullfile(paths.colorCues, strcat(imName, '.mat'));
-		save(fileName, 'bg', 'cga', 'cgb', 'tg');
+		% save(fileName, 'bg', 'cga', 'cgb', 'tg');
 	end
 	
 	%% Code to compute the depth and normal cues
@@ -18,7 +18,7 @@ function [bg, cga, cgb, tg, ng1, ng2, dg, z, cues] = computeLocalCues(imName, pa
 		[ng1, ng2, dg, raw] = computeDepthCues(pc, pcf, param.depthParam);
 		z = pcf(:,:,3)./100;
 		fileName = fullfile(paths.depthCues, strcat(imName, '.mat'));
-		save(fileName, 'ng1', 'ng2', 'dg', 'z');
+		% save(fileName, 'ng1', 'ng2', 'dg', 'z');
 	end
 	cues = cat(4, ng1, ng2, dg, bg, cga, cgb, tg, repmat(z, [1 1 8 1]));
 
