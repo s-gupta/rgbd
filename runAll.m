@@ -26,12 +26,12 @@ function [ucm2, amodal, superpixels, semantics] = runAll(imNum, rgbImage, depthI
   imName = sprintf('img_%04d', imNum);
   
   paths = getPaths(0);
-  % % Write the color image
-  % imwrite(im2uint8(rgbImage), fullfile(paths.colorImageDir, [imName '.png']), 'png');
+  % Write the color image
+  imwrite(im2uint8(rgbImage), fullfile(paths.colorImageDir, [imName '.png']), 'png');
 
-  % % % Write the point cloud
-  % [x3 y3 z3] = getPointCloudFromZ(double(depthImage*100), cameraMatrix, 1);
-  % save(fullfile(paths.pcDir, [imName '.mat']), 'x3', 'y3', 'z3');
+  % % Write the point cloud
+  [x3 y3 z3] = getPointCloudFromZ(double(depthImage*100), cameraMatrix, 1);
+  save(fullfile(paths.pcDir, [imName '.mat']), 'x3', 'y3', 'z3');
 
   % Compute UCM features
   computeUCMFeatures(imName, paths, false);
