@@ -34,7 +34,7 @@ function [ucm2, amodal, superpixels, semantics] = runAll(imNum, rgbImage, depthI
   % save(fullfile(paths.pcDir, [imName '.mat']), 'x3', 'y3', 'z3');
 
   % Compute UCM features
-	computeUCMFeatures(imName, paths, false);
+  computeUCMFeatures(imName, paths, false);
 
   % Compute the UCM
   featuresToUcm('trainval', paths, imName);
@@ -45,35 +45,35 @@ function [ucm2, amodal, superpixels, semantics] = runAll(imNum, rgbImage, depthI
   ucmThresh = dt.th.ucmThresh;
 
   % Compute Amodal completion
-	amodalParam = struct('thresh', [-1 26], 'ucmThresh', ucmThresh);
-	ucm2 = getUCM(imName);
-	pc = getPointCloud(imName);
-	doAmodalCompletion(imName, paths, ucm2, pc, amodalParam);
+  amodalParam = struct('thresh', [-1 26], 'ucmThresh', ucmThresh);
+  ucm2 = getUCM(imName);
+  pc = getPointCloud(imName);
+  doAmodalCompletion(imName, paths, ucm2, pc, amodalParam);
 
   % Compute generic, sift and gtextons
-	wrapperComputeFeatures1(imName, ucmThresh);
+  wrapperComputeFeatures1(imName, ucmThresh);
   
   % Compute category specific features
-	modelFile = fullfile(paths.modelDir, 'svm-categorySpecific_entryLevel_categorySpecific-all.mat');
+  modelFile = fullfile(paths.modelDir, 'svm-categorySpecific_entryLevel_categorySpecific-all.mat');
   dirName = fullfile(paths.featuresDir, 'categorySpecific-all');
   if(~exist(dirName, 'dir'))
     mkdir(dirName);
   end
   dt = load(modelFile, 'param', 'models');
-	categorySpecificFeatures(imName, paths, dt.param, dt.models);
+  categorySpecificFeatures(imName, paths, dt.param, dt.models);
 
   % Compute Scores for without the scene classification
   modelFileName = fullfile(paths.modelDir, 'svm-full_entryLevel_ancFull_tr-train_val-val_useVal-1.mat');
-	[softOutputDir, hardOutputDir] = testModel(imName, paths, modelFileName);
+  [softOutputDir, hardOutputDir] = testModel(imName, paths, modelFileName);
 
   % Compute the scene classification and scores
-	sceneModelName = fullfile(paths.modelDir, 'scene-objScores_tr-train_val-val_useVal-1'); %TODO
+  sceneModelName = fullfile(paths.modelDir, 'scene-objScores_tr-train_val-val_useVal-1'); %TODO
   outputFileName = testSceneModel(imName, paths, sceneModelName);
   wrapperComputeFeatures3(imName, outputFileName);
   
   % Compute the final scores and semantic segmentation
   modelFileName = fullfile(paths.modelDir, 'svm-full_entryLevel_ancFullScene_tr-train_val-val_useVal-1.mat');
-	[softOutputDir, hardOutputDir] = testModel(imName, paths, modelFileName);
+  [softOutputDir, hardOutputDir] = testModel(imName, paths, modelFileName);
 
   % Generate visualizations!
   saveUCM(imName, ucmThresh);
