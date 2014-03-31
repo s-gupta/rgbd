@@ -1,5 +1,5 @@
-function [ucm, amodal, superpixels, semantics, scenes] = runAll(imNum, rgbImage, depthImage, cameraMatrix)
-% function runAll(imNum, rgbImage, depthImage, cameraMatrix)
+function [ucm2, amodal, superpixels, semantics] = runAll(imNum, rgbImage, depthImage, cameraMatrix)
+% function [ucm, amodal, superpixels, semantics] = runAll(imNum, rgbImage, depthImage, cameraMatrix)
 % Still works by saving all intermediate features as files.
 % Input:
 %   imNum: the number to associate this file as. If you dont know what to use, just pick any number from 1 to 5000
@@ -8,18 +8,27 @@ function [ucm, amodal, superpixels, semantics, scenes] = runAll(imNum, rgbImage,
 %     Should be after projection from the depth camera to the RGB camera.
 %   cameraMatrix: to project the depth image into the point cloud.
 % Output:
-% 
+%   ucm2: in double format. To look at contours do, imagesc(ucm(3:2:end, 3:2:end));
+%     to get superpixels do sp2 = bwlabel(ucm2 < thresh); sp = sp2(2:2:end, 2:2:end);
+%   amodal: the amodal sompletions.
+%   superpixels: the superpixels used for amodal completion and semantic segmentation
+%   semantics.
+%     .superpixels:   the superpixels
+%     .rawScores:     scores from the SVM classifiers for each category
+%     .scores:        probabilities obtained by applying a multi class logistic over the SVM scores
+%     .segmentation:  hard segmentation - a label for each pixel
+%     .classes:    ind to class name mapping.
 
   % Create a new name for the image 
   imName = sprintf('img_%04d', imNum);
   
   paths = getPaths(0);
-  % Write the color image
-  imwrite(im2uint8(rgbImage), fullfile(paths.colorImageDir, [imName '.png']), 'png');
+  % % Write the color image
+  % imwrite(im2uint8(rgbImage), fullfile(paths.colorImageDir, [imName '.png']), 'png');
 
-  % Write the point cloud
-  [x3 y3 z3] = getPointCloudFromZ(double(depthImage*100), cameraMatrix, 1);
-  save(fullfile(paths.pcDir, [imName '.mat']), 'x3', 'y3', 'z3');
+  % % % Write the point cloud
+  % [x3 y3 z3] = getPointCloudFromZ(double(depthImage*100), cameraMatrix, 1);
+  % save(fullfile(paths.pcDir, [imName '.mat']), 'x3', 'y3', 'z3');
 
   % Compute UCM features
 	computeUCMFeatures(imName, paths, false);
@@ -76,5 +85,6 @@ function [ucm, amodal, superpixels, semantics, scenes] = runAll(imNum, rgbImage,
   semantics = load(fullfile(softOutputDir, imName));
   dt = load(fullfile(hardOutputDir, imName));
   semantics.segmentation = dt.segmentation;
-
+  dt = getMetadata('classMapping40');
+  semantics.classes = dt.className;
 end
