@@ -2,7 +2,9 @@ function [ucm2, amodal, superpixels, semantics] = runAll(imNum, rgbImage, depthI
 % function [ucm, amodal, superpixels, semantics] = runAll(imNum, rgbImage, depthImage, cameraMatrix)
 % Still works by saving all intermediate features as files.
 % Input:
-%   imNum: the number to associate this file as. If you dont know what to use, just pick any number from 1 to 5000
+%   imNum: the number to associate this file as. If you dont know what to use, just pick numbers starting from 1,
+%     Note that some intermediate results are cached, and you should delete the intermediate output files in 
+%     paths.cachedir corresponding to sprintf('img_%04d', imNum), if you want to recompute results from scratch
 %   rgbImage: as obtained from the Kinect
 %   depthImage: for each pixel has the depth in metres. Missing data is represented as NaNs, in double format. 
 %     Should be after projection from the depth camera to the RGB camera.
@@ -18,6 +20,7 @@ function [ucm2, amodal, superpixels, semantics] = runAll(imNum, rgbImage, depthI
 %     .scores:        probabilities obtained by applying a multi class logistic over the SVM scores
 %     .segmentation:  hard segmentation - a label for each pixel
 %     .classes:    ind to class name mapping.
+%   Also stores visualization of the results in paths.visDir, and the full output in paths.outDir
 
   % Create a new name for the image 
   imName = sprintf('img_%04d', imNum);
