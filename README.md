@@ -13,10 +13,15 @@ Notes
   These libraries include: 
   a. gPb-UCM from 
     (http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_full.tgz)
+
   b. VLFeat from http://www.vlfeat.org/
+
   c. liblinear from http://www.csie.ntu.edu.tw/~cjlin/liblinear/
+
   d. liblinear dense from http://ttic.uchicago.edu/~smaji/projects/digits/
+
   e. SIFT color desprictors from http://www.colordescriptors.com, We used v2.1.
+
   f. Image Stack Library https://code.google.com/p/imagestack/, for computing
   the local deph boundary cues.
 
