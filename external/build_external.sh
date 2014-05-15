@@ -13,7 +13,7 @@ cp predict.mexa64 ../../predict.mexa64
 cd ../../
 
 # Build imagestack library
-cd imagestack
+cd imagestack-src
 make -f makefiles/Makefile.linux -j 8
 cp bin/ImageStack ../.
 cd ../

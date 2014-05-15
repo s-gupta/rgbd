@@ -1,5 +1,5 @@
 cd gpb_src
-make clean
+make clean -j 4
 make -j 4
 make matlab -j 4
 cp -f matlab/segmentation/load_smatrix.mex* ../../lib/
