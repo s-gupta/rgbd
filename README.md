@@ -30,12 +30,15 @@ startup.m and COM/getPaths.m
 
 2. The code is intended for use with the data available here. This contains the
 color images, preprocessed point clouds and the preprocessed ground truth. 
-http://www.cs.berkeley.edu/~sgupta/cvpr13/data.tgz . Please modify COM/getPaths.m 
+http://www.cs.berkeley.edu/~sgupta/cvpr13/data.tgz (please use wget if 
+downloading in Chrome does not work). Please modify COM/getPaths.m 
 and allBenchmarks/benchmarkPaths.m to point to where you put the data folder. 
 
 3. We also provide the 
-precomputed results, http://www.cs.berkeley.edu/~sgupta/cvpr13/output.tgz, 
-and the pretrained models, http://www.cs.berkeley.edu/~sgupta/cvpr13/model.tgz.
+precomputed results, http://www.cs.berkeley.edu/~sgupta/cvpr13/output.tgz 
+(please use wget if downloading in Chrome does not work), and the pretrained 
+models, http://www.cs.berkeley.edu/~sgupta/cvpr13/model.tgz (please use 
+wget if downloading in Chrome does not work).
 
 Data Preprocessing
 ------------------
@@ -57,14 +60,16 @@ etal in the following ways:
 
 Precomputed Results
 -------------------
-1. http://www.cs.berkeley.edu/~sgupta/cvpr13/output.tgz:
+1. http://www.cs.berkeley.edu/~sgupta/cvpr13/output.tgz (please use wget if 
+downloading in Chrome does not work):
 includes the folder cachedir/release/output which contains the UCM, amodal
 completion and the semantic segmentation outputs. Their are also .mat files
 with the performance of our system.
 
 Pre trained Models
 ------------------
-1. http://www.cs.berkeley.edu/~sgupta/cvpr13/model.tgz, includes the folder
+1. http://www.cs.berkeley.edu/~sgupta/cvpr13/model.tgz (please use wget if 
+downloading in Chrome does not work), includes the folder
 cachedir/release/model which has the pretrained ucm models, various semantic
 segmentation and scene classification models.
 
